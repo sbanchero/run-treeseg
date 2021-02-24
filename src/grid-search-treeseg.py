@@ -39,7 +39,7 @@ query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin,
 
 
 def get_downsample_file(DIR_ROOT):
-    path_lst = [x for x in glob(DIR_ROOT+"/*") if 'downsample' in x]
+	path_lst = [x for x in glob(DIR_ROOT+"/*") if 'downsample' in x]
 	return path_lst[0]
 
 def get_slice_file(DIR_ROOT):
