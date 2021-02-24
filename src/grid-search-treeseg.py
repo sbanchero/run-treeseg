@@ -97,17 +97,19 @@ def main(args):
 		
 		if d != previous_d:
 			run_downsample(edgelength)
-			
+			previous_d = d
 		print(f"getdemslice(resolution={resolution}, percentil={percentil}, zmin={zmin}, zmax={zmax})")
 		
 		if g != previous_g:
 			run_getdemslice(resolution, percentil, zmin, zmax, path_experiment)
 			previous_path_experiment = path_experiment
-		
+			
 		print(f"findstems(smooth={smooth}, dmin={dmin}, dmax={dmax})")
 		
 		if g != previous_g:
 			run_findstems(smooth, dmin, dmax, IN_coords, path_experiment)
+			previous_g = g
+			
 		else:
 			run_findstems(smooth, dmin, dmax, IN_coords, previous_path_experiment)
 		
