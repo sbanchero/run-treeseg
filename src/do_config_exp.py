@@ -47,22 +47,22 @@ con.commit()
 # ---------------------------
 
 downsample = {
-        "edgelength": {"min":0.01, "max": 0.1, "step": 0.01},
+        "edgelength": {"min":0.04, "max": 0.05, "step": 0.01},
         "command": "downsample"
 }
 
 getdemslice = {
         "resolution": {"min":0.25, "max": 1.5, "step": 0.25},
-        "percentil": {"min":0.0, "max": 0.2, "step": 0.1},
-        "zmin": {"min":0.0, "max": 0.5, "step": 0.1},
-        "zmax": {"min":0.6, "max": 1.5, "step": 0.1},
+        "percentil": {"min":1.0, "max": 2.5, "step": 0.5},
+        "zmin": {"min":1.0, "max": 1.5, "step": 0.5},
+        "zmax": {"min":1.5, "max": 3.5, "step": 0.5},
         "command": "getdemslice"
 }
 
 findstems = {
-        "smooth": {"min":10, "max":25, "step": 5},
-        "dmin": {"min":0.1, "max": 0.5, "step": 0.1},
-        "dmax": {"min":0.6, "max": 2.0, "step": 0.1},
+        "smooth": {"min": 10, "max":  25, "step": 5},
+        "dmin":   {"min":0.1,  "max": 0.5, "step": 0.1},
+        "dmax":   {"min":0.6,  "max": 2.0, "step": 0.1},
         "command": "findstems"
 }
 
