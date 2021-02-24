@@ -35,7 +35,7 @@ IN_coords = argv[2]
 db_config = argv[3]
 DIR_ROOT = argv[4]
 
-query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d.id, g.id, f.id FROM downsample d, getdemslice g, findstems f LIMIT 10"
+query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d.id, g.id, f.id FROM downsample d, getdemslice g, findstems f"
 
 
 def get_downsample_file(DIR_ROOT):
@@ -76,7 +76,7 @@ def run_findstems(smooth, dmin, dmax, IN_coords, path_experiment):
 	print("Process 3")
 	try:
 		process_3 = run(cmd_3, check=True, stdout=PIPE, universal_newlines=True)
-		#print(process_3.stdout)
+		print(process_3.stdout)
 	except CalledProcessError as error:
 		print(f"ERROR: {error}")
 
