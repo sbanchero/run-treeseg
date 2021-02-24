@@ -1,6 +1,7 @@
 CREATE TABLE downsample (
 	id INTEGER PRIMARY KEY,
-	edgelength FLOAT NOT NULL
+	edgelength FLOAT NOT NULL,
+	status INTEGER NOT NULL
 );
 
 CREATE TABLE getdemslice (
@@ -8,13 +9,15 @@ CREATE TABLE getdemslice (
 	resolution FLOAT NOT NULL,
 	percentil FLOAT NOT NULL,
 	zmin FLOAT NOT NULL,
-	zmax FLOAT NOT NULL
+	zmax FLOAT NOT NULL,
+	status INTEGER NOT NULL
 );
 
 CREATE TABLE findstems (
 	id INTEGER PRIMARY KEY,
 	smooth FLOAT NOT NULL,
 	dmin FLOAT NOT NULL,
-	dmax FLOAT NOT NULL
+	dmax FLOAT NOT NULL,
+	status INTEGER NOT NULL
 );
  
