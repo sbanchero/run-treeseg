@@ -89,7 +89,7 @@ def main(args):
 	con = sqlite3.connect(db_config)
 	cursor = con.cursor()
 	id_exp = 0
-	previous_d, previous_g = None
+	previous_d = previous_g = None
 	for edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d, g, f in cursor.execute(query_exp):
 		print(f"ID: {id_exp}")
 		print(f"START: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
