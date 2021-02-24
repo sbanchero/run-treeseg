@@ -39,11 +39,8 @@ query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin,
 
 
 def get_downsample_file(DIR_ROOT):
-    print(DIR_ROOT)
     path_lst = [x for x in glob(DIR_ROOT+"/*") if 'downsample' in x]
-
-    print(path_lst)
-    return path_lst[0]
+	return path_lst[0]
 
 def get_slice_file(DIR_ROOT):
     return [x for x in glob(DIR_ROOT+"/*") if 'slice' in x][0]
@@ -67,13 +64,13 @@ def run_downsample(edgelength):
 	
 
 def run_getdemslice(resolution, percentil, zmin, zmax, path_experiment):
-	cmd_2 = ["getdemslice", resolution, percentil, zmin, zmax, get_downsample_file(path_experiment)]
+	cmd_2 = ["getdemslice", str(resolution), str(percentil), str(zmin), str(zmax), get_downsample_file(path_experiment)]
 	print("Process 2")
 	process_2 = run(cmd_2, check=True, stdout=PIPE, universal_newlines=True)
 	
 
 def run_findstems(smooth, dmin, dmax, IN_coords, path_experiment):
-	cmd_3 = ["findstems", smooth, dmin, dmax, IN_coords, get_slice_file(path_experiment)]
+	cmd_3 = ["findstems", str(smooth), str(dmin), str(dmax), IN_coords, get_slice_file(path_experiment)]
 
 	print("Process 3")
 	try:
