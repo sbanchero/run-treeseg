@@ -86,7 +86,7 @@ def main(args):
 	con = sqlite3.connect(db_config)
 	cursor = con.cursor()
 	id_exp = 0
-	previous_d = previous_g = None
+	previous_path_experiment = previous_d = previous_g = None
 	for edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d, g, f in cursor.execute(query_exp):
 		print(f"ID: {id_exp}")
 		print(f"START: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -106,9 +106,9 @@ def main(args):
 		print(f"findstems(smooth={smooth}, dmin={dmin}, dmax={dmax})")
 		
 		if g != previous_g:
-			run_findstems(smooth, dmin, dmax, path_experiment)
+			run_findstems(smooth, dmin, dmax, IN_coords, path_experiment)
 		else:
-			run_findstems(smooth, dmin, dmax, previous_path_experiment)
+			run_findstems(smooth, dmin, dmax, IN_coords, previous_path_experiment)
 		
 		print(f"END: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
