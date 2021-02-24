@@ -69,7 +69,7 @@ findstems = {
 def fill_downsample():
 	cursor = con.cursor()
 	for edgelength in np.arange(downsample["edgelength"]["min"], downsample["edgelength"]["max"], downsample["edgelength"]["step"]):
-		cursor.execute("insert into downsample (edgelength, status) values (?)", (str(edgelength), "1"))
+		cursor.execute("insert into downsample (edgelength) values (?)", (str(edgelength),))
 	con.commit()
 	print("downsample ... ready")
 
