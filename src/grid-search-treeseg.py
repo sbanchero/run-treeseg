@@ -35,7 +35,7 @@ IN_coords = argv[2]
 db_config = argv[3]
 DIR_ROOT = argv[4]
 
-query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax d.id, g.id, f.id FROM downsample d, getdemslice g, findstems f LIMIT 10"
+query_exp = "SELECT edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d.id, g.id, f.id FROM downsample d, getdemslice g, findstems f LIMIT 10"
 
 
 def get_downsample_file(DIR_ROOT):
@@ -54,9 +54,9 @@ def new_running_dir():
 	# Start with new experiment
 	MAIN_DIR_EXP = datetime.datetime.now().isoformat()
 	path_experiment = os.path.join(DIR_ROOT, MAIN_DIR_EXP)  
-	# ~ os.mkdir(path_experiment) 
+	os.mkdir(path_experiment) 
 
-	# ~ os.chdir(path_experiment)
+	os.chdir(path_experiment)
 	
 	return path_experiment
 
