@@ -70,7 +70,8 @@ def run_getdemslice(resolution, percentil, zmin, zmax, path_experiment):
 	
 
 def run_findstems(smooth, dmin, dmax, IN_coords, path_experiment):
-	cmd_3 = ["findstems", str(smooth), str(dmin), str(dmax), IN_coords, get_slice_file(path_experiment)]
+	LMIN = 0.5
+	cmd_3 = ["findstems", str(smooth), str(dmin), str(dmax), str(LMIN), IN_coords, get_slice_file(path_experiment)]
 
 	print("Process 3")
 	try:
