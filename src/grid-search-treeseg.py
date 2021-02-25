@@ -29,7 +29,6 @@ import os
 import datetime
 import sqlite3
 
-
 IN_PCL_TILE = argv[1]
 IN_coords = argv[2]
 db_config = argv[3]
@@ -83,38 +82,39 @@ def run_findstems(smooth, dmin, dmax, IN_coords, path_experiment):
 	except CalledProcessError as error:
 		print(f"ERROR: {error}")
 
-
-
 def main(args):	
 	# ------  ------
 	con = sqlite3.connect(db_config)
 	cursor = con.cursor()
 	id_exp = 0
-	previous_path_experiment = previous_d = previous_g = None
+	previous_path_down = previous_path_getdem = previous_d = previous_g = None
 	for edgelength, resolution, percentil, zmin, zmax, smooth, dmin, dmax, d, g, f in cursor.execute(query_exp):
 		print(f"ID: {id_exp}")
 		print(f"START: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 		path_experiment = new_running_dir()
-		print(f"FULL PATH: {path_experiment}")
+		print(f"CURRENT RUNNING: {path_experiment}")
 		print(f"downsample(edgelength={edgelength})")
 		
 		if d != previous_d:
 			run_downsample(edgelength)
 			previous_d = d
+			previous_path_down = path_experiment
+
+		print(f"CURRENT PATH DOWNSAMPLE: {previous_path_down}")
+		
 		print(f"getdemslice(resolution={resolution}, percentil={percentil}, zmin={zmin}, zmax={zmax})")
 		
 		if g != previous_g:
-			run_getdemslice(resolution, percentil, zmin, zmax, path_experiment)
-			previous_path_experiment = path_experiment
-			
+			run_getdemslice(resolution, percentil, zmin, zmax, previous_path_down)
+			previous_path_getdem = path_experiment
+			previous_g = g
+
+		print(f"CURRENT PATH GETDEMSLICE: {previous_path_getdem}")
+
 		print(f"findstems(smooth={smooth}, dmin={dmin}, dmax={dmax})")
 		
-		if g != previous_g:
-			run_findstems(smooth, dmin, dmax, IN_coords, path_experiment)
-			previous_g = g
-			
-		else:
-			run_findstems(smooth, dmin, dmax, IN_coords, previous_path_experiment)
+		run_findstems(smooth, dmin, dmax, IN_coords, previous_path_getdem)
+					
 		
 		print(f"END: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
