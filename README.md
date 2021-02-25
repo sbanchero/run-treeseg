@@ -8,5 +8,5 @@ Running [treeseg](https://github.com/apburt/treeseg) as batch mode with differen
 
 ## Running batch process
 
-  python3 grid-search-treeseg.py <input.pcd> <base-coords.dat> <config-db>  <main-dir>
+  python3 grid-search-treeseg.py <input.pcd> <base-coords.dat> <config-db> <main-dir>
 
